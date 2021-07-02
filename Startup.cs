@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdvancedImobiliaria.Database.Common;
+using AdvancedImobiliaria.Repositories;
+using AdvancedImobiliaria.Repositories.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +51,11 @@ namespace AdvancedImobiliaria
             services.AddDbContext<ImobiliariaContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("AdvancedImobiliaria")
             ));
+
+            #region Repositories
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IPhysicalPersonRepository, PhysicalPersonRepository>();
+            #endregion
 
             services.AddControllersWithViews();
         }
