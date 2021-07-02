@@ -1,4 +1,6 @@
 using System;
+using System.Security.Claims;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AdvancedImobiliaria.Models.Enums;
 
@@ -23,5 +25,7 @@ namespace AdvancedImobiliaria.Models.Entities
         public string Cep { get; set; }
         public string CityId { get; set; }
         public City City { get; set; }
+
+        public UserRoles Role { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AdvancedImobiliaria.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdvancedImobiliaria.Controllers
 {
@@ -23,7 +24,14 @@ namespace AdvancedImobiliaria.Controllers
             return View();
         }
 
+        [Authorize("OnlyClients")]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }

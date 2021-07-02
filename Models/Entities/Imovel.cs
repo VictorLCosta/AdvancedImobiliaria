@@ -5,7 +5,7 @@ namespace AdvancedImobiliaria.Models.Entities
 {
     public class Imovel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public ImovelType Tipo { get; set; }
         public int Banheiros { get; set; }
         public int Dormitorios { get; set; }
@@ -24,6 +24,11 @@ namespace AdvancedImobiliaria.Models.Entities
         public string Complemento { get; set; }
         public decimal Value { get; set; }
         public decimal Iptu { get; set; }
-        public string ImagePath { get; set; }
+        
+        public Guid physicalPersonId { get; set; }
+        public PhysicalPerson physicalPerson { get; set; }
+        public Guid legalEntityId { get; set; }
+        public LegalEntity legalEntity { get; set; }
+        public Sale Sale { get; set; }
     }
 }
