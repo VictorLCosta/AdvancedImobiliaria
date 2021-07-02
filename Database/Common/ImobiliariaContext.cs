@@ -25,6 +25,10 @@ namespace AdvancedImobiliaria.Database.Common
             base.OnModelCreating(mb);
 
             mb.ApplyConfiguration(new PhysicalPersonMap());
+            mb.ApplyConfiguration(new LegalEntityMap());
+            mb.ApplyConfiguration(new ImovelEntityMap());
+            mb.ApplyConfiguration(new SaleEntityMap());
+            mb.ApplyConfiguration(new CityEntityMap());
         }
     }
 }
