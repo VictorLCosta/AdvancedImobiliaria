@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdvancedImobiliaria.Database.Common;
+using AdvancedImobiliaria.Interfaces;
 using AdvancedImobiliaria.Repositories;
 using AdvancedImobiliaria.Repositories.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -56,6 +57,8 @@ namespace AdvancedImobiliaria
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPhysicalPersonRepository, PhysicalPersonRepository>();
             #endregion
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllersWithViews();
         }
