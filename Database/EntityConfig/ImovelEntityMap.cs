@@ -15,8 +15,6 @@ namespace AdvancedImobiliaria.Database.EntityConfig
                 .HasConversion<string>();
 
             builder.HasQueryFilter(m => m.Status != ImovelStatus.Sold);
-
-            
         }
     }
 }

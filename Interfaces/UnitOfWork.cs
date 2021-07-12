@@ -9,11 +9,13 @@ namespace AdvancedImobiliaria.Interfaces
 	{
         private readonly ImobiliariaContext _context;
         public IPhysicalPersonRepository PhysicalPerson { get; private set; }
+		public IImovelRepository ImovelRepository { get; private set; }
 
 		public UnitOfWork(ImobiliariaContext context)
         {
             _context = context;
             PhysicalPerson = new PhysicalPersonRepository(_context);
+			ImovelRepository = new ImovelRepository(_context);
         }
 
 		public async Task<int> Complete()

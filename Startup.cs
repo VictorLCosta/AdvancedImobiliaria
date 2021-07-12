@@ -15,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FluentValidation.AspNetCore;
+using AdvancedImobiliaria.Services.Hasher;
 
 namespace AdvancedImobiliaria
 {
@@ -53,12 +55,19 @@ namespace AdvancedImobiliaria
                 Configuration.GetConnectionString("AdvancedImobiliaria")
             ));
 
+            services.AddScoped<PasswordHasher>();
+
             #region Repositories
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPhysicalPersonRepository, PhysicalPersonRepository>();
+            services.AddTransient<IImovelRepository, ImovelRepository>();
             #endregion
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+            services.AddMvc()
+                .AddFluentValidation(fvc => 
+                    fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             services.AddControllersWithViews();
         }

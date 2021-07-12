@@ -18,7 +18,7 @@ namespace AdvancedImobiliaria.Models.Entities
 
         [NotMapped]
         public string ProvidedPassword { get; set; }
-        public string PasswordHash { get; set; }
+        public byte[] PasswordHash { get; set; }
         public ClientStatus Status { get; set; }
         public string MotivoStatus { get; set; }
         public decimal Salary { get; set; }
